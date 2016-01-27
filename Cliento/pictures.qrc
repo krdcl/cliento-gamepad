@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pictures/Button-Add-icon.png</file>
+        <file>pictures/Button-Close-icon.png</file>
+        <file>pictures/Button-Delete-icon.png</file>
+        <file>pictures/Button-Download-icon.png</file>
+        <file>pictures/Button-Last-icon.png</file>
+        <file>pictures/Button-Ok-icon.png</file>
+        <file>pictures/Button-Pause-icon.png</file>
+        <file>pictures/Button-Play-icon.png</file>
+        <file>pictures/Button-Reload-icon.png</file>
+    </qresource>
+</RCC>
