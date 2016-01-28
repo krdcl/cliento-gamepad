@@ -32,6 +32,17 @@ Rectangle {
         color: d_pad.color;
         x: 0;
         y: width;
+        MultiPointTouchArea {
+            anchors.fill: parent
+            onPressed: {
+                parent.border.color = "deeppink";
+                Keys.pressA();
+            }
+            onReleased: {
+                 parent.border.color = d_pad.border.color;
+                 Keys.releaseA();
+            }
+        }
     }
     Rectangle {
         id: d_up;
@@ -44,6 +55,17 @@ Rectangle {
         color: d_pad.color;
         x:width
         y: 0;
+        MultiPointTouchArea {
+            anchors.fill: parent
+            onPressed: {
+                parent.border.color = "deeppink";
+                Keys.pressW();
+            }
+            onReleased: {
+                 parent.border.color = d_pad.border.color;
+                 Keys.releaseW();
+            }
+        }
     }
     Rectangle {
         id: d_right
@@ -56,6 +78,17 @@ Rectangle {
         color: d_pad.color;
         x:2*width;
         y:width;
+        MultiPointTouchArea {
+            anchors.fill: parent
+            onPressed: {
+                parent.border.color = "deeppink";
+                Keys.pressS();
+            }
+            onReleased: {
+                 parent.border.color = d_pad.border.color;
+                 Keys.releaseS();
+            }
+        }
     }
     Rectangle {
         id: d_down
@@ -68,6 +101,17 @@ Rectangle {
         color: d_pad.color;
         x: width
         y: 2*width
+        MultiPointTouchArea {
+            anchors.fill: parent
+            onPressed: {
+                parent.border.color = "deeppink";
+                Keys.pressS();
+            }
+            onReleased: {
+                 parent.border.color = d_pad.border.color;
+                 Keys.releaseS();
+            }
+        }
     }
 
 
