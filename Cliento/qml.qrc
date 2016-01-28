@@ -6,6 +6,6 @@
         <file>RB.qml</file>
         <file>KeyPress.js</file>
         <file>Dpad.qml</file>
-        <file>Button.qml</file>
+        <file>Batton.qml</file>
     </qresource>
 </RCC>

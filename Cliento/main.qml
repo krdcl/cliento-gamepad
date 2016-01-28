@@ -154,11 +154,10 @@ Window {
 
 
 
-            RB {
-                init_x: leftPart.width *0.1;
-                init_y: leftPart.height * 0.05
-                text_value: "LBUTTON"
-                keyVK: "VK_LBUTTON"
+            Batton {
+                x: leftPart.width *0.1;
+                y: leftPart.height * 0.05
+                key: "LBUTTON"
             }
 
            Dpad {
