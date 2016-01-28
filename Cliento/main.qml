@@ -29,7 +29,10 @@ Window {
     Timer {
         id: reconect_timer
         interval: 1000; running: false; repeat: true
-        onTriggered: myclient.reconect();
+        onTriggered:  {
+            running = false;
+            myclient.reconect();
+        }
     }
     Timer {
         interval: 10; running: true; repeat: true
@@ -48,7 +51,7 @@ Window {
     Connections {
         target: myclient
 
-        /*onClosed: {
+        onClosed: {
             mainwindow.visible = false
             lost_con_rect.visible = true
             reconect_timer.running = true;
@@ -58,7 +61,7 @@ Window {
             mainwindow.visible = true
             lost_con_rect.visible = false
             reconect_timer.running = false;
-        }*/
+        }
     }
     Rectangle {
         id: lost_con_rect
@@ -120,6 +123,19 @@ Window {
         anchors.fill:  parent
         color: "blue"
         visible: true
+        Image {
+            source: "qrc:/pictures/cvr3Swqf-bw.jpg";
+            anchors.fill: parent;
+        }
+
+        Rectangle {
+            id: touch_rec
+            width: mainwindow.width/20
+            height: width
+            color: "cyan"
+            visible: false
+            radius: 1000;
+        }
 
         MouseArea {
             id: touch
@@ -128,24 +144,28 @@ Window {
             onPressed:  {
                 prev_pos.x = mouseX;
                 prev_pos.y = mouseY;
+
+                touch_rec.visible = true;
             }
+
+            onReleased: {
+                touch_rec.visible = false;
+            }
+
             Component.onCompleted:   {
                 prev_pos.x = mouseX;
                 prev_pos.y = mouseY;
+                touch_rec.visible = false;
             }
 
             onPositionChanged: {
-                //var str = (mouseX -  prev_pos.x) + " " + (mouseY -  prev_pos.y);
-                //  var str = ((mouseX -  prev_pos.x)) + " " + ((mouseY -  prev_pos.y));
-                // myclient.send_data(str, 55 );
-
-                /* prev_pos.x = mouseX;
-        prev_pos.y = mouseY;*/
+                touch_rec.x = mouseX - touch_rec.width/2
+                touch_rec.y = mouseY - touch_rec.width/2
             }
         }
 
         Rectangle {
-            color : "olivedrab"
+            color : "transparent"
             id: leftPart
             anchors.left: mainwindow.left
             anchors.bottom: mainwindow.bottom
@@ -157,11 +177,13 @@ Window {
             Batton {
                 x: leftPart.width *0.1;
                 y: leftPart.height * 0.05
-                key: "LBUTTON"
+                width: leftPart.width *0.4;
+                height: leftPart.height * 0.2
+                key: "LB"
             }
 
            Dpad {
-               width: leftPart.width/3;
+               width: leftPart.width/2.5;
                height: width;
                anchors.bottom: leftPart.bottom
                anchors.left: leftPart.left
@@ -170,51 +192,64 @@ Window {
         }
 
         Rectangle {
-            color : "olivedrab"
+            color : "transparent"
             id: rigthPart
             anchors.left: mainwindow.horizontalCenter
             anchors.bottom: mainwindow.bottom
             anchors.top: mainwindow.top
             anchors.right: mainwindow.right
 
-            RB {
-                init_x: rigthPart.width *0.5;
-                init_y: rigthPart.height * 0.05
-                text_value: "RBUTTON"
-                keyVK: "VK_RBUTTON"
+
+
+            Batton {
+                x: rigthPart.width *0.5;
+                y: rigthPart.height * 0.05
+                key: "RB"
+                width: rigthPart.width *0.4;
+                height: rigthPart.height * 0.2
             }
 
-            ABXY {
-                id: butonA;
-                init_x: rigthPart.width * 0.4
-                init_y: rigthPart.height - 1.5 *height;
-                text_value: "F"
-                keyVK: "VK_F"
-            }
-            ABXY {
-                id: butonB;
-                init_x: rigthPart.width * 0.7
-                init_y: rigthPart.height -height * 1.2;
-                text_value: "S"
-                keyVK: "VK_S"
+            Batton {
+                x: rigthPart.width *0.7;
+                y: rigthPart.height * 0.75
+                key: "SPACE"
+                width: rigthPart.width *0.25;
+                height: width
             }
 
-            ABXY {
-                id: butonX;
-                init_x: rigthPart.width * 0.4
-                init_y: rigthPart.height - 3 *height;
-                text_value: "A"
-                y_scale : 1.5
-                keyVK: "VK_A"
+            Batton {
+                x: rigthPart.width *0.7;
+                y: rigthPart.height * 0.5
+                key: "SHIFT"
+                width: rigthPart.width *0.25;
+                height: width
             }
-            ABXY {
-                id: butonY;
-                init_x: rigthPart.width * 0.7
-                init_y: rigthPart.height - height * 2.7;
-                text_value: "D"
-                y_scale : 1.2;
-                keyVK: "VK_D"
+
+            Batton {
+                x: rigthPart.width *0.4;
+                y: rigthPart.height * 0.75
+                key: "CTRL"
+                width: rigthPart.width *0.25;
+                height: width
             }
+
+            Batton {
+                x: rigthPart.width *0.4;
+                y: rigthPart.height * 0.5
+                key: "R"
+                width: rigthPart.width *0.25;
+                height: width
+            }
+
+            Batton {
+                x: rigthPart.width *0.1;
+                y: rigthPart.height * 0.75
+                key: "E"
+                width: rigthPart.width *0.25;
+                height: width
+            }
+
+
 
 
 

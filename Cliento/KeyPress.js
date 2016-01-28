@@ -28,40 +28,76 @@ var b_pressW = false;
 var b_pressX = false;
 var b_pressY = false;
 var b_pressZ = false;
-var b_pressLBUTTON = false;
-var b_pressRBUTTON = false;
+var b_pressLB = false;
+var b_pressRB = false;
+var b_pressCTRL = false;
+var b_pressSHIFT = false;
 
-function pressLBUTTON()
+function pressSHIFT()
 {
-    if ( b_pressLBUTTON === false)
+    if ( b_pressSHIFT === false)
     {
-        b_pressLBUTTON = true;
-        myclient.send_data("LBUTTON", 1 );
+        b_pressSHIFT = true;
+        myclient.send_data("SHIFT", 1 );
     }
 }
-function releaseLBUTTON()
+function releaseSHIFT()
+{
+    if ( b_pressSHIFT === true)
+    {
+        b_pressSHIFT = false;
+        myclient.send_data("SHIFT", 0 );
+    }
+}
+
+function pressCTRL()
+{
+    if ( b_pressCTRL === false)
+    {
+        b_pressCTRL = true;
+        myclient.send_data("CTRL", 1 );
+    }
+}
+function releaseCTRL()
+{
+    if ( b_pressCTRL === true)
+    {
+        b_pressCTRL = false;
+        myclient.send_data("CTRL", 0 );
+    }
+}
+
+function pressLB()
+{
+    if ( b_pressLB === false)
+    {
+        b_pressLB = true;
+        myclient.send_data("LB", 1 );
+    }
+}
+function releaseLB()
 {
     if ( b_pressA === true)
     {
         b_pressA = false;
-        myclient.send_data("LBUTTON", 0 );
+        myclient.send_data("LB", 0 );
     }
 }
 
-function pressRBUTTON()
+function pressRB()
 {
-    if ( b_pressRBUTTON === false)
+    if ( b_pressRB === false)
     {
-        b_pressRBUTTON = true;
-        myclient.send_data("RBUTTON", 1 );
+        b_pressRB = true;
+        myclient.send_data("RB", 1 );
     }
 }
-function releaseRBUTTON()
+function releaseRB()
 {
     if ( b_pressR === true)
     {
         b_pressR = false;
-        myclient.send_data("RBUTTON", 0 );
+        myclient.send_data("RB", 0 );
     }
 }
 

@@ -16,19 +16,33 @@ Rectangle {
     }
     width:100
     height: 100;
-    property string key: "A";
-   color: "transparent";
+    radius: 10000;
+    property string key: "AAA";
+    color: "transparent";
     MultiPointTouchArea {
         anchors.fill: parent
         onPressed: {
             parent.border.color = "deeppink";
-           // window["Keys"]("press" + parent.key)()
+            // window["Keys"]("press" + parent.key)()
             var ret = eval("Keys.press" + parent.key +"()");
         }
         onReleased: {
-             parent.border.color = "cyan";
+            parent.border.color = "cyan";
             //window["Keys"]("release" + parent.key)()
             var ret = eval("Keys.release" + parent.key +"()");
         }
     }
+
+    Text {
+        width: parent.width;
+        height: parent.height;
+        text: d_left.key;
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter;
+        font.family: "Helvetica"
+        font.pointSize: 24
+        color: "cyan"
+        //color: "red"
+    }
+
 }

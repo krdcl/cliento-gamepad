@@ -19,7 +19,10 @@ Rectangle {
         color: "cyan";
     }
     anchors.bottom: leftPart.bottom;
-
+ radius: width/5
+ MultiPointTouchArea {
+     anchors.fill: parent
+ }
 
     Rectangle {
         id: d_left
@@ -30,6 +33,7 @@ Rectangle {
         width: d_pad.width/3
         height: width;
         color: d_pad.color;
+        radius: width/5
         x: 0;
         y: width;
         MultiPointTouchArea {
@@ -53,6 +57,7 @@ Rectangle {
         width: d_pad.width/3
         height: width;
         color: d_pad.color;
+        radius: width/5
         x:width
         y: 0;
         MultiPointTouchArea {
@@ -76,6 +81,7 @@ Rectangle {
         width: d_pad.width/3
         height: width;
         color: d_pad.color;
+        radius: width/5
         x:2*width;
         y:width;
         MultiPointTouchArea {
@@ -99,6 +105,7 @@ Rectangle {
         width: d_pad.width/3
         height: width;
         color: d_pad.color;
+        radius: width/5
         x: width
         y: 2*width
         MultiPointTouchArea {

@@ -5,7 +5,8 @@ QT += qml quick network widgets declarative opengl websockets
 SOURCES += main.cpp \
     client.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml.qrc \
+    pic.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
