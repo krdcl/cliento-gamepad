@@ -2,8 +2,9 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>ABXY.qml</file>
-        <file>DPad.qml</file>
         <file>shaderTest.qml</file>
         <file>RB.qml</file>
+        <file>KeyPress.js</file>
+        <file>Dpad.qml</file>
     </qresource>
 </RCC>

@@ -1,56 +1,79 @@
 import QtQuick 2.4
+import QtQuick.Window 2.2
+//import QtLocation 5.3
+import com.client 1.0
+import QtQuick.Controls 1.3
 import QtGraphicalEffects 1.0
-import QtLocation 5.3
+import QtQuick.Controls.Styles 1.3
+import QtQuick.Window 2.2
+import "KeyPress.js" as Keys
 
 
 Rectangle {
-    id: main
-    width: 120
-    height: 120
-    color:"transparent"
-    property color colorisha: "mediumspringgreen"
-    property real init_shader_widtha: 50
-    property int init_x;
-    property int init_y;
-    property string keyVK: "VK_DOWN"
-    property string img_source:  "qrc:/pictures/Button-Download-icon.png";
+    id: d_pad
+    width: 100;
+    height: 100;
+    color: "transparent";
+    border {
+        width: 5;
+        color: "cyan";
+    }
+    anchors.bottom: leftPart.bottom;
 
-    MultiPointTouchArea {
-        anchors.fill: parent
-        onPressed:  {
-            main.width = init_shader_widtha * 1.5 ;
-            main.height = main.width;
-            main.x -=  main.width/6;
-            myclient.send_data(keyVK, 1 ) ;
 
+    Rectangle {
+        id: d_left
+        border {
+            width: 5;
+            color: "cyan";
         }
-        onReleased: {
-            main.x = init_x;
-            main.width = init_shader_widtha ;
-             main.height = init_shader_widtha;
-            myclient.send_data(keyVK, 0 )
+        width: d_pad.width/3
+        height: width;
+        color: d_pad.color;
+        x: 0;
+        y: width;
+    }
+    Rectangle {
+        id: d_up;
+        border {
+            width: 5;
+            color: "cyan";
         }
+        width: d_pad.width/3
+        height: width;
+        color: d_pad.color;
+        x:width
+        y: 0;
+    }
+    Rectangle {
+        id: d_right
+        border {
+            width: 5;
+            color: "cyan";
+        }
+        width: d_pad.width/3
+        height: width;
+        color: d_pad.color;
+        x:2*width;
+        y:width;
+    }
+    Rectangle {
+        id: d_down
+        border {
+            width: 5;
+            color: "cyan";
+        }
+        width: d_pad.width/3
+        height: width;
+        color: d_pad.color;
+        x: width
+        y: 2*width
     }
 
-    Image {
-        id: img
-        source: img_source;
-        /*
-          width: 200
-          height: 200*/
-        //color: main.colorisha
-        width: main.width
-        height: main.height
-    }
-    Timer {
-        interval: 1; running: true; repeat: true
-        onTriggered:{
 
-            //  shader.time+=0.01
 
-            //console.log("time: " + shader.time)
-        }
-    }
+
 
 
 }
+
